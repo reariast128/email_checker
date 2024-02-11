@@ -1,6 +1,10 @@
 import re
 
-expression = "\w+@{1}[a-zA-Z]+\.{1}[a-zA-Z]+"
+# Load valid-tld list
+with open("domain_list.txt", "r") as file:
+    tld_list = file.readlines()
+
+expression = "\w+@{1}[a-zA-Z]+\.{1}[a-zA-Z]{1-4}"
 email = input("Type your email -> ")
 
 validator = re.fullmatch(expression, email)
